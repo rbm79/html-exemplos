@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Define a codificação de caracteres do documento como UTF-8 -->
+    <meta charset="UTF-8">
+    <title>Formulário de Contato</title>
+</head>
+<body>
+    <!-- Início do formulário. 
+         action define para onde os dados serão enviados, 
+         method define o método HTTP usado (POST é usado para envio de dados sensíveis)
+         POST é um metodo de requisição HTTP usado para enviar dados para serem processados 
+         por um recurso espefificado
+         - Quando o form é submetido usando POST, os dados são enviados no corpo da 
+           requisição HTTP, não na URL
+         - Os dados enviados via POST não aparecem na barra de enderecos do navegador   -->
+    <form>
+        <!-- Rótulo para o campo de nome -->
+        <label for="nome">Nome:</label>
+        <!-- Campo de entrada para o nome. 
+             'id' liga o input ao label, 
+             'name' é usado para identificar o campo no servidor -->
+        <input type="text" id="nome" name="nome"><br><br>
+        
+        <!-- Rótulo para o campo de email -->
+        <label for="email">Email:</label>
+
+        <!-- Campo de entrada para o email. 
+             type="email" fornece validação básica de formato de email -->
+        <input type="email" id="email" name="email"><br><br>
+        
+        <!-- Botão de envio do formulário -->
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

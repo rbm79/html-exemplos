@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Contato com Validação Simples</title>
+</head>
+<body>
+    <form id="contactForm" action="/enviar" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome"><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        
+        <input type="submit" value="Enviar">
+    </form>
+
+    <!-- Div para mostrar a mensagem -->
+    <div id="resultado" style="margin-top: 20px;"></div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio real do formulário
+            
+            var nome = document.getElementById('nome').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var resultado = document.getElementById('resultado');
+            
+            if (nome === '' || email === '') {
+                resultado.innerHTML = '<p style="color: red;">Por favor, preencha todos os campos.</p>';
+            } else {
+                // Exibe a resposta na página
+                resultado.innerHTML = '<p style="color: green;">Formulário enviado com sucesso!<br>Nome: ' + nome + '<br>Email: ' + email + '</p>';
+            }
+        });
+    </script>
+</body>
+</html>

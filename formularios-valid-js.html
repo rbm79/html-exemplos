@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Contato com Validação Simples</title>
+</head>
+<body>
+    <form id="contactForm" action="/enviar" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome"><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            var nome = document.getElementById('nome').value.trim();
+            var email = document.getElementById('email').value.trim();
+            
+            if (nome === '' || email === '') {
+                event.preventDefault(); // Impede o envio do formulário
+                alert('Por favor, preencha todos os campos.');
+            }
+        });
+    </script>
+</body>
+</html>

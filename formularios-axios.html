@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Contato com Axios</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- Inclui Axios -->
+</head>
+<body>
+    <h1>Formulário de Contato</h1>
+
+    <form id="contactForm">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome"><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        
+        <input type="submit" value="Enviar">
+    </form>
+
+    <!-- Div para exibir o resultado -->
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Impede o envio padrão do formulário
+
+            var nome = document.getElementById('nome').value.trim();
+            var email = document.getElementById('email').value.trim();
+
+            // Validação simples
+            if (nome === '' || email === '') {
+                document.getElementById('resultado').innerHTML = '<p style="color:red;">Por favor, preencha todos os campos.</p>';
+                return;
+            }
+
+            // Envio dos dados usando Axios
+            axios.post('/enviar', {
+                nome: nome,
+                email: email
+            })
+            .then(function (response) {
+                // Exibir mensagem de sucesso
+                document.getElementById('resultado').innerHTML = '<p style="color:green;">' + response.data.message + '</p>';
+            })
+            .catch(function (error) {
+                // Exibir mensagem de erro
+                document.getElementById('resultado').innerHTML = '<p style="color:red;">Ocorreu um erro ao enviar o formulário.</p>';
+                console.error('Erro:', error);
+            });
+        });
+    </script>
+</body>
+</html>
